@@ -1,0 +1,66 @@
+[
+  {
+    "id": "1",
+    "type": "checkboxes",
+    "question": "Please check the symptoms you are currently experiencing:",
+    "options": [
+      "Fever",
+      "Cough",
+      "Body pains",
+      "Shortness of breath",
+      "Diarrhea",
+      "History of travel within the last 2 weeks ?",
+      "History of contact or exposure to someone who travelled in areas with local transmission?",
+      "History of contact or exposure to a person with suspected/ probable positive case of covid 19 ?",
+      "Do you or anyone in your household have any of the above mentioned symptoms or pending COVID-19 test results?"
+    ],
+    "answers": []
+  },
+  {
+    "id": "2",
+    "type": "short answer",
+    "required": 1,
+    "question": "If you have fever, since when?"
+  },
+  {
+    "id": "3",
+    "type": "short answer",
+    "question": "If you have travel history within the last two weeks, when and where?"
+  },
+  {
+    "id": "4",
+    "type": "checkboxes",
+    "required": 1,
+    "question": "Is there anyone at home with you who has COVID19 symptoms?",
+    "options": [
+      "Fever",
+      "Colds",
+      "Dry Cough",
+      "Sore throat",
+      "Diarrhea",
+      "Loss of taste or smell",
+      "Rash on skin",
+      "Aches and pains",
+      "None"
+    ],
+    "answers": []
+  },
+  {
+    "id": "5",
+    "type": "temperature",
+    "required": 1,
+    "question": "Your Temperature now?"
+  },
+  {
+    "id": "6",
+    "type": "true or false",
+    "required": 1,
+    "question": "Is there a reported COVID-19 suspect/ positive from your barangay?"
+  },
+  {
+    "id": "7",
+    "type": "true or false",
+    "required": 1,
+    "question": "Is there a reported COVID-19 suspect/ positive from your household?"
+  }
+]

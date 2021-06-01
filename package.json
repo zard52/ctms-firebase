@@ -1,0 +1,62 @@
+{
+  "name": "olz",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@date-io/moment": "^1.3.13",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/pickers": "^3.3.10",
+    "@mdi/js": "^4.9.95",
+    "@mdi/react": "^1.5.0",
+    "airport-codes": "^1.0.2",
+    "date-fns": "^2.21.3",
+    "firebase": "^8.6.3",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-dropzone": "^10.2.2",
+    "react-number-format": "^4.6.0",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "3.0.1",
+    "react-step-wizard": "^5.3.6",
+    "redux": "^4.1.0",
+    "redux-thunk": "^2.3.0",
+    "typeface-anton": "0.0.72",
+    "typeface-open-sans-condensed": "0.0.72",
+    "typeface-oswald": "0.0.75"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "seed": "firestore-seed"
+  },
+  "firestore-seed": {
+    "databaseURL": "adler-8835a.appspot.com",
+    "credentialPath": "./database/auth/serviceAccountKey.json",
+    "seedDataPath": "./database/seeder.js"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "firestore-seed": "0.0.11"
+  }
+}
