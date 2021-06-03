@@ -1,16 +1,2 @@
-0000000000000000000000000000000000000000 c62c16bd5baa2dded326323101e3f7b7f8f9ee4f unknown <addtim52@gmail.com> 1622097745 +0800	clone: from https://zard52@bitbucket.org/technowiztom/ctms-firebase.git
-c62c16bd5baa2dded326323101e3f7b7f8f9ee4f a4c77499568fc90d7a8e4a4941e859a3ca8f3dc6 unknown <addtim52@gmail.com> 1622099558 +0800	commit: facebook
-a4c77499568fc90d7a8e4a4941e859a3ca8f3dc6 f26424da31061621230cecbfeecda30b4d2e1134 unknown <addtim52@gmail.com> 1622107523 +0800	commit: first
-f26424da31061621230cecbfeecda30b4d2e1134 25be2f56b005b8d75dc124bd972ceb1c4f9cb988 unknown <addtim52@gmail.com> 1622166796 +0800	pull: Fast-forward
-25be2f56b005b8d75dc124bd972ceb1c4f9cb988 e4daea10d760c966de750d8cac6a5f1654d0c47f unknown <addtim52@gmail.com> 1622167207 +0800	commit: seeder
-e4daea10d760c966de750d8cac6a5f1654d0c47f dd15c0f098af683ec2afdaa7f7e998c605257c7c unknown <addtim52@gmail.com> 1622172623 +0800	commit: seeder upadte
-dd15c0f098af683ec2afdaa7f7e998c605257c7c 17d384cee945216b08f9a78e57d2a1805d757dc2 unknown <addtim52@gmail.com> 1622174812 +0800	commit: seeder survey
-17d384cee945216b08f9a78e57d2a1805d757dc2 6178a185cfaea43161c13afcbe6c8299097929a1 unknown <addtim52@gmail.com> 1622418640 +0800	pull: Fast-forward
-6178a185cfaea43161c13afcbe6c8299097929a1 7004bce423fa447552d1c406680fab4097194ebf unknown <addtim52@gmail.com> 1622419762 +0800	commit: public folder
-7004bce423fa447552d1c406680fab4097194ebf d4ddcaea80e1d41673ba4cc8ce1a4ca65aa96ab9 unknown <addtim52@gmail.com> 1622420180 +0800	commit: minor fix
-d4ddcaea80e1d41673ba4cc8ce1a4ca65aa96ab9 5c2d8708118dc784328b59fd63dfdbeba0630030 unknown <addtim52@gmail.com> 1622440962 +0800	commit: qcard
-5c2d8708118dc784328b59fd63dfdbeba0630030 3722929666ff16e707972180ddbc48b58d0e5381 unknown <addtim52@gmail.com> 1622442216 +0800	commit (merge): merge
-3722929666ff16e707972180ddbc48b58d0e5381 6ed0c00410887e0bf6f53ec6ccee3415919f4afc unknown <addtim52@gmail.com> 1622442305 +0800	pull: Merge made by the 'recursive' strategy.
-6ed0c00410887e0bf6f53ec6ccee3415919f4afc a64a1abb03764793aafa151f415aaca8447eff03 unknown <addtim52@gmail.com> 1622449072 +0800	commit: survey question card
-a64a1abb03764793aafa151f415aaca8447eff03 78e96e68abcdc1fe43fbd17d477e295332596355 unknown <addtim52@gmail.com> 1622518404 +0800	commit: Survey Form - posting
-78e96e68abcdc1fe43fbd17d477e295332596355 bbef868416fba098f5caf5014d043b3f81692ee6 unknown <addtim52@gmail.com> 1622533278 +0800	commit: merge
+0000000000000000000000000000000000000000 6fc14da5448146acfed44a32fe9a765b2cb9456f unknown <addtim52@gmail.com> 1622677052 +0800	clone: from https://zard52@bitbucket.org/technowiztom/ctms-firebase.git
+6fc14da5448146acfed44a32fe9a765b2cb9456f d538775a256b9da2e865bc8fabafda8519dc75b5 unknown <addtim52@gmail.com> 1622691807 +0800	commit: reg+=campus,location

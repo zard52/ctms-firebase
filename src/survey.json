@@ -55,12 +55,12 @@
     "id": "6",
     "type": "true or false",
     "required": 1,
-    "question": "Is there a reported COVID-19 suspect/ positive from your barangay?"
+    "question": "Any reported COVID-19 suspect/ positive from your Barangay?"
   },
   {
     "id": "7",
     "type": "true or false",
     "required": 1,
-    "question": "Is there a reported COVID-19 suspect/ positive from your household?"
+    "question": "Any reported COVID-19 suspect/ positive from your household?"
   }
 ]

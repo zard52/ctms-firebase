@@ -7,16 +7,30 @@ import { compose } from 'redux'
 import { Icon } from '@mdi/react'
 import { mdiPlus } from '@mdi/js'
 import { Main } from '..'
-import airport from 'airport-codes'
 import { AddSurvey, UpdateSurvey } from '.'
 import moment from 'moment'
+import Tooltip from '@material-ui/core/Tooltip';
+import StorageIcon from '@material-ui/icons/Storage';
+import IconButton from '@material-ui/core/IconButton';
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import RateReviewIcon from '@material-ui/icons/RateReview';
+
+import {
+  Table,
+  Button,
+  Container,
+  Span,
+  
+
+} from '@material-ui/core'
+
 
 class Survey extends Component {
 
   actions = [
     {
       icon: <Icon path={mdiPlus} size={1} />,
-      onClick: () => this.setState({ openFlight: true })
+      onClick: () => this.setState({ openSurvey: true })
     }
   ]
 
@@ -25,15 +39,15 @@ class Survey extends Component {
     surveysRef: null,
     survey: null,
     activeId: null,
-    openFlight: false,
+    openSurvey: false,
     exibitFlight: false,
   }
+  
 
   componentDidMount() {
     this.setState({ loading: true })
     const surveysRefs = this.props.firebase.survey()
     surveysRefs.onSnapshot(surveysRef => {
-      console.log('surveysRef:', surveysRef.docs);
       this.setState({ surveysRef: surveysRef.docs, loading: false, survey: surveysRef.docs })
     })
     // Search
@@ -44,33 +58,8 @@ class Survey extends Component {
       }
     })
   }
-  onSearch = (country) => {
-    const iatas = this.renderAirports(country)
-    const survey = this.state.surveysRef.filter(survey => {
-      if (iatas.find(aita => aita === survey.data().origin) ||
-        iatas.find(aita => aita === survey.data().destination)) {
-        return survey;
-      }
-      return null
-    })
-    this.setState({ survey })
-  }
-  renderAirports(country) {
-    if (country) {
-      const airportModelsCountry = airport.filter((model) => model.get('country') === country)
-      const airports = airportModelsCountry.map((city) => city.iata !== "" && city.get('iata'))
-      return airports;
-    }
-    return null;
-  }
-  // Callback function
-  handleLike = (pk, survey, userId) => {
-    if (survey.likes.find(like => like === userId)) {
-      alert('Already Voted!')
-    } else {
-      survey.likes.push(userId);
-      this.props.firebase.addLikeOnSurvey(pk, survey.current, survey.likes)
-    }
+  onSearch = (employee) => {
+    console.log(employee);
   }
   handleUpdate = (activeId, survey) => {
     this.setState({ activeId, survey, exibitFlight: true })
@@ -80,40 +69,72 @@ class Survey extends Component {
   }
 
   render() {
-    const { survey, openFlight, exibitFlight, activeId } = this.state
+    const { survey, openSurvey, exibitFlight, activeId } = this.state
+    
     return (
       <Main actions={this.actions}>
-        <table>
-          <thead>
-            <tr><th>#</th></tr>
-          </thead>
-          <tbody>
-            {this.renderSurveyCards(survey)}
-          </tbody>
-        </table>
-
-        <AddSurvey open={openFlight} onClose={() => this.setState({ openFlight: false })} />
-        <UpdateSurvey
-          open={exibitFlight}
-          onClose={() => this.setState({ exibitFlight: false })}
-          pk={activeId}
-          survey={survey}
-        />
+        <Container className="Maincontainer"  style={{ backgroundColor: '#dddddd' }} maxWidth="large">
+           <Container className="Body" style={{ margin : '20px' }} maxWidth="large">
+             <span>
+             <Tooltip title="Record">
+              <IconButton aria-label="View ">
+                <StorageIcon style = {{ color : 'black'}}/>
+              </IconButton>
+            </Tooltip>
+                Record</span>
+                          <Table >
+                            <thead>
+                              <tr style = {{ backgroundColor: '#152238', color: 'white'}} >
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Employee</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody style ={{ textAlign: 'center'}}>
+                              {this.renderSurveyCards(survey)}
+                            </tbody>
+                          </Table>
+                      <AddSurvey
+                        open={openSurvey}
+                        onClose={() => this.setState({ openSurvey: false })} />
+                      <UpdateSurvey
+                        open={exibitFlight}
+                        onClose={() => this.setState({ exibitFlight: false })}
+                        pk={activeId}
+                        survey={survey}
+                      />
+            </Container>   
+        </Container>
       </Main>
     )
   }
 
   renderSurveyCards(survey) {
     if (survey) {
-      return survey.sort((a, b) => a.data().current < b.data().current ? 1 : -1) // highest number of votes to lowest 
-        .map((survey) => {
-          const { date, destination } = survey.data();
-          return <tr>
-            <td> {moment(date).format("LL")}</td>
-            <td>{destination}</td>
-
-          </tr>
-        })
+      return survey.map((survey, index) => {
+        console.log(survey)
+        const { date, employee, status } = survey.data();
+        return <tr id={index} style={{ borderBottom: '2px outset #152238' }}>
+          <td> {++index}</td>
+          <td> {moment(date).format("LL")}</td>
+          <td>{employee}</td>
+          <td>{status}</td>
+          <td>
+           <Tooltip title="View">
+              <IconButton aria-label="View ">
+                <VisibilityIcon style = {{ color : 'black'}}/>
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Issue">
+              <IconButton aria-label="Review ">
+                <RateReviewIcon style = {{ color : 'black'}}/>
+              </IconButton>
+            </Tooltip>
+          </td>
+        </tr>
+      })
     }
   }
 

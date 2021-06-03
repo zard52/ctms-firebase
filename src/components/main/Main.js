@@ -10,6 +10,7 @@ const styles = {
     flexWrap: 'wrap',
     position: 'relative',
     height: window.innerHeight - 64,
+ 
   },
 }
 

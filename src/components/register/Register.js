@@ -4,13 +4,22 @@ import { withRouter } from 'react-router-dom'
 import { withFirebase } from '../../firebase'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { Box, TextField as MaterialTextField, IconButton } from '@material-ui/core'
+import { Box, 
+  TextField as MaterialTextField, 
+  IconButton,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Typography 
+} from '@material-ui/core'
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye'
 import RemoveRedEyeOutlined from '@material-ui/icons/RemoveRedEyeOutlined'
 import { Button } from '../common'
 import { grey } from '@material-ui/core/colors'
 import { authAction } from '../../actions'
 import { PATHS } from '../../constants';
+import campuses from '../../campuses.json'
 // import StepWizard from "react-step-wizard";
 // import Account from './account'
 
@@ -27,7 +36,7 @@ const styles = {
     right: 0,
   },
   main: {
-    height: 500,
+    height: 700,
     width: 450,
     borderRadius: 10,
     border: `1px solid ${grey[400]}`,
@@ -76,6 +85,7 @@ const TextField = (props) => {
 
 class Register extends Component {
   state = {
+    campuses: campuses,
     fname: {
       value: null,
       error: null
@@ -96,6 +106,14 @@ class Register extends Component {
       value: null,
       error: null
     },
+    campus: {
+      value: null,
+      error: null
+    },
+    location: {
+      value: null,
+      error: null
+    },
     email: {
       value: null,
       error: null
@@ -107,16 +125,22 @@ class Register extends Component {
       show: false
     },
   }
+  componentWillMount(){
+    console.log(campuses)
+  }
 
   render() {
-    const { fname, mname, lname, suffix, phone, email, password } = this.state
+    const { fname, mname, lname, suffix, phone, campus, campuses, location, email, password } = this.state
+    let writer = campuses.map((campus, i) => {
+      return (<MenuItem id={i} value={campus.code}>{campus.name}</MenuItem>)
+    });
     return (
       <div style={styles.body}>
         <Box style={styles.main}>
+          <Typography variant="h4">New Account</Typography>
           <div style={styles.nameContainer}>
             <TextField
               fullWidth
-              style={{ marginRight: 16 }}
               variant='outlined'
               label='First Name'
               error={fname.error}
@@ -126,7 +150,6 @@ class Register extends Component {
           <div style={styles.nameContainer}>
             <TextField
               fullWidth
-              style={{ marginRight: 16 }}
               variant='outlined'
               label='Middle Name'
               error={mname.error}
@@ -158,6 +181,32 @@ class Register extends Component {
               label='Phone Number'
               error={phone.error}
               onChange={(event) => this.setState({ phone: { value: event.target.value, error: null } })}
+            />
+          </div>
+          <div style={styles.nameContainer}>
+            <FormControl variant="outlined" fullWidth>
+              <InputLabel id="campus-label">Campus</InputLabel>
+              <Select
+                labelId="campus-label"
+                id="campus"             
+                error={campus.error}
+                onChange={(event) => this.setState({ campus: { value: event.target.value, error: null } })}
+                label="Campus"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                {writer}
+              </Select>
+            </FormControl>
+          </div>
+          <div style={styles.nameContainer}>
+            <TextField
+              fullWidth
+              variant='outlined'
+              label='Office / Department'
+              error={location.error}
+              onChange={(event) => this.setState({ location: { value: event.target.value, error: null } })}
             />
           </div>
           <div style={styles.emailContainer}>
@@ -219,7 +268,7 @@ class Register extends Component {
   }
 
   async register() {
-    const { email, password, fname, mname, lname, suffix, phone } = this.state
+    const { email, password, fname, mname, campus, location, lname, suffix, phone } = this.state
 
     try {
       const authUser = await this.props.firebase.createUserWithEmailAndPassword(email.value, password.value)
@@ -234,10 +283,12 @@ class Register extends Component {
         lname: lname.value,
         suffix: suffix.value,
         phone: phone.value,
+        campus: campus.value,
+        location: location.value,
         role: "user"
       })
       this.props.setUser(authUser)
-      this.props.history.push(PATHS.home) //need proper success screen
+      this.props.history.push(PATHS.survey) //need proper success screen
     } catch (error) {
       this.setState({
         error: error

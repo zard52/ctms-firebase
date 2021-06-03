@@ -10,8 +10,7 @@ const app = firebase.initializeApp({
   databaseURL: process.env.REACT_APP_DATABASE_URL,
   projectId: process.env.REACT_APP_PROJECT_ID,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID  
+  appId: process.env.REACT_APP_APP_ID
 })
 
 class Firebase {
@@ -67,7 +66,7 @@ class Firebase {
   }
 
   survey = () => {
-    const surveyRef = this.db.collection('surveys');
+    const surveyRef = this.db.collection('survey');
     return surveyRef
   }
 
@@ -86,7 +85,7 @@ class Firebase {
     const surveyRef = this.db.collection('survey').doc(pk);
     surveyRef.delete();
   }
-  
+
 }
 
 export default Firebase

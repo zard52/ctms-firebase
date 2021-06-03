@@ -101,8 +101,54 @@ class Login extends Component {
     }
   }
   handOnclick = async (prov) => {
-    const res = await socialMediaAuth(prov)
-    if (res.email) {
+    console.log(prov.providerId)
+    prov.addScope('email')
+    if(prov.providerId === "facebook.com"){
+      prov.addScope('user_birthday')
+      prov.addScope('user_gender')
+      prov.addScope('user_location')
+      prov.addScope('user_link')
+      const res = await socialMediaAuth(prov)
+      console.log(res)
+      const {email, first_name, last_name, id, picture, birthday, gender, link, location} = res.additionalUserInfo.profile;
+      const {phoneNumber} = res.user;
+      const userDoc = await this.props.firebase.user(id)
+      userDoc.set({
+        facebook_id: id,
+        email: email,
+        fname: first_name,
+        lname: last_name,
+        gender: gender,
+        location: location.name,
+        phone: phoneNumber,
+        dob: birthday,
+        facebook_link: link,
+        picture: picture.data.url,
+        role: "user",
+      })
+      this.props.history.push(PATHS.survey)
+    }
+    else if(prov.providerId === "google.com"){
+      
+      // prov.addScope('https://www.googleapis.com/auth/user.birthday.read')
+      // prov.addScope('https://www.googleapis.com/auth/user.gender.read')
+      // prov.addScope('https://www.googleapis.com/auth/user.addresses.read')
+      // prov.addScope('https://www.googleapis.com/auth/user.phonenumbers.read')
+      const res = await socialMediaAuth(prov)
+      console.log(prov)
+      console.log(res)
+
+      const {family_name, given_name, id, picture} = res.additionalUserInfo.profile;
+      const {email} = res.user;
+      const userDoc = await this.props.firebase.user(id)
+      userDoc.set({
+        gmail_id: id,
+        email: email,
+        fname: given_name,
+        lname: family_name,
+        picture: picture,
+        role: "user",
+      })
       this.props.history.push(PATHS.survey)
     }
   }
@@ -112,6 +158,7 @@ class Login extends Component {
     return (
       <div style={styles.body}>
         <Box style={styles.main}>
+        NEUST | CTMS
           <div>
             <TextField
               fullWidth
@@ -139,7 +186,7 @@ class Login extends Component {
            
             <Button
               color="primary"
-              onClick={() => this.handOnclick(facebookProvider)}
+              onClick={async () => {let xx = await this.handOnclick(facebookProvider); console.log(xx) }}
             >
              <FacebookIcon fontSize='large' />
               Signin With Facebook

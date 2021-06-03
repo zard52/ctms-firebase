@@ -1,0 +1,67 @@
+[
+    {
+      "id": "1",
+      "code": "GTC",
+      "name": "Gen. Tinio Street Campus"
+    },
+    {
+      "id": "2",
+      "code": "SUM",
+      "name": "Sumacab Campus"
+    },
+    {
+      "id": "3",
+      "code": "SIC",
+      "name": "San Isidro Campus"
+    },
+    {
+      "id": "4",
+      "code": "GAB",
+      "name": "Gabaldon Campus"
+    },
+    {
+      "id": "5",
+      "code": "ATATE",
+      "name": "Atate Campus"
+    },
+    {
+      "id": "6",
+      "code": "FMC",
+      "name": "Fort Magsaysay Campus"
+    },
+    {
+      "id": "7",
+      "code": "TAL",
+      "name": "Talavera Off-campus"
+    },
+    {
+      "id": "8",
+      "code": "CAR",
+      "name": "Carranglan Off-campus"
+    },
+    {
+      "id": "9",
+      "code": "SLC",
+      "name": "San Leonardo Off-campus"
+    },
+    {
+      "id": "10",
+      "code": "POC",
+      "name": "Papaya Off-campus"
+    },
+    {
+      "id": "11",
+      "code": "PEN",
+      "name": "Penaranda Off-campus"
+    },
+    {
+      "id": "12",
+      "code": "SAC",
+      "name": "San Antonio Off-campus"
+    },
+    {
+      "id": "13",
+      "code": "SDC",
+      "name": "Sto. Domingo Off-campus"
+    }
+]

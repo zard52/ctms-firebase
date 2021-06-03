@@ -80,7 +80,7 @@ class Home extends Component {
                NUEVA ECIJA UNIVERSITY OF SCIENCE AND TECHNOLOGY
               </div> 
               <div style={styles.subtitlemain}>
-               Contact Traicing 
+               Contact Tracing 
               </div>
               <div style={styles.subtitle}>
                 Monitor on demand. Anytime. Anywhere.

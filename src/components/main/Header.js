@@ -14,9 +14,13 @@ import { PATHS } from '../../constants';
 const styles = {
   container: {
     height: 64,
-    margin: "0px 8px",
+    margin: "1px",
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#152238',
+    color: 'white',
+
+    borderRadius : '10px'
   },
   buttonContainer: {
     display: 'flex'
@@ -38,10 +42,11 @@ const styles = {
     margin: 8
   },
   nameAvatar: {
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     height: 20,
     width: 20,
-    marginRight: 5
+    marginRight: 8,
+    color: 'black'
   }
 }
 
@@ -59,12 +64,12 @@ const HeaderPageButtons = (props) => {
       pageButtons.map((page) => {
         let display = page.name
         if (page.type === 'account') {
-          display = <div style={{ display: 'flex', alignItems: 'center' }}>
+          display = <div style={{ display: 'flex', alignItems: 'center', color: 'white' }}>
             <Avatar style={styles.nameAvatar}>{props.currentUser.displayName.charAt(0)}</Avatar>
             {props.currentUser.displayName}
           </div>
         }
-        return <Button style={props.location.pathname.includes(page.name.toLowerCase()) ? { ...styles.button, color: 'rgb(0,0,0)' } : styles.button}
+        return <Button style={props.location.pathname.includes(page.name.toLowerCase()) ? { ...styles.button, color: 'rgb(0,0,)' } : styles.button}
           onClick={() => props.history.push(page.path)}
         >
           {display}
@@ -94,8 +99,8 @@ const OptionsPopOver = (props) => {
 
   return (
     <div>
-      <IconButton onClick={handleClick}>
-        <MoreVert />
+      <IconButton  onClick={handleClick}>
+        <MoreVert style={{ color: 'white' }} /> 
       </IconButton>
       <Menu
         anchorEl={anchorEl}
@@ -118,13 +123,13 @@ class Header extends Component {
     return (
       <div style={styles.container}>
         <ButtonBase style={styles.logoContainer} onClick={this.logoPress.bind(this)}>
-          Logo
+          NEUST| CTMS
         </ButtonBase>
         <HeaderSearch style={styles.search} />
         <div style={styles.buttonContainer}>
           <HeaderPageButtons {...this.props} />
           <IconButton >
-            <Notifications />
+            <Notifications style={{ color: 'white' }}  />
           </IconButton>
           <OptionsPopOver
             open={this.state.options}
